@@ -1,0 +1,22 @@
+<html lang="ru"><head><meta charset="utf-8"><title>Химера · Кунсткамера невозможного</title>
+<style>
+body{margin:0;background:#0b0d12;font-size:0;line-height:0;visibility:hidden}
+main{visibility:visible;max-width:800px;margin:0 auto;padding:48px 24px 80px;font:18px/1.65 'PT Serif',Georgia,serif;color:#ddd5c2}
+h1{margin:0 0 24px;font-size:34px;line-height:1.2;font-weight:normal;color:#e0bd72}
+img{display:block;width:100%;margin:28px 0;border:1px solid #2a2f3a}
+code,ul{font-family:'PT Mono',Menlo,Consolas,monospace}
+code{font-size:15px;color:#9fc0e0}
+summary{cursor:pointer;color:#e0bd72}
+ul{font-size:13px;line-height:1.55;color:#8fa3b8;columns:2;padding-left:18px}
+small{color:#8d8471}
+plaintext{display:none}
+</style></head><body><main>
+<h1>Я — картинка, веб&#8209;страница и&nbsp;архив одновременно</h1>
+<p>Вы открыли этот файл как веб&#8209;страницу. Но это тот же самый файл, что лежит в музее под именем <code>kunstkamera.png</code>: его первые байты — заголовок PNG, а текст, который вы читаете, спрятан внутри картинки, в служебном фрагменте с именем <code>htMl</code>. Программы просмотра изображений такие фрагменты вежливо пропускают.</p>
+<p>Вот он же, показанный как картинка, — браузер прочитал тот же самый файл второй раз, теперь как изображение:</p>
+<img id="me" alt="(здесь должна быть картинка — откройте страницу в Chrome, Firefox или Safari)">
+<script>me.src=location.href.split('#')[0]</script>
+<p>А в самом хвосте файла, сразу после конца картинки, лежит ZIP&#8209;архив со всем музеем. Переименуйте файл в <code>.zip</code> и распакуйте — внутри %COUNT% файлов, исходники всех экспонатов:</p>
+<details><summary>содержимое архива</summary><ul>%FILES%</ul></details>
+<p><small>Три формата уживаются в одном файле, потому что каждый читает его со своей стороны: PNG — с начала, ZIP — с конца, а HTML прощает любой мусор вокруг себя.</small></p>
+</main>
