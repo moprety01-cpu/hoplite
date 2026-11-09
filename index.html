@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кунсткамера невозможного</title>
+<meta name="description" content="Пять вещей, которых не может быть, — и каждую можно проверить прямо в браузере.">
+<meta property="og:title" content="Кунсткамера невозможного">
+<meta property="og:description" content="Глобус, который печатает сам себя. Простое число, которое говорит. Предложение, которое пересчитало себя. Картинка-архив. И git-история, которой не может быть.">
+<meta property="og:image" content="exhibits/4-chimera/kunstkamera.png">
+<meta name="theme-color" content="#0b0d12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2228%22 fill=%22%23c8a75e%22/%3E%3Cpath d=%22M14 24h18M10 34h26M16 44h14%22 stroke=%22%230b0d12%22 stroke-width=%224%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="site/style.css">
+<script type="module" src="site/app.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <p class="kicker">Цифровой кабинет редкостей · открыт 9 ноября 2026 года</p>
+  <h1>Кунсткамера<br>невозможного</h1>
+  <p class="lead">Пять вещей, которых не может быть. Ни одна из них не фокус: каждую можно проверить — прямо на&nbsp;этой странице, в вашем браузере, или у себя в терминале одной командой.</p>
+  <blockquote>«Хочу, чтобы люди смотрели и учились».<cite>Пётр&nbsp;I, основатель первой Кунсткамеры</cite></blockquote>
+  <nav class="index">
+    <a href="#globe"><span>I</span>Глобус, который печатает сам себя</a>
+    <a href="#prime"><span>II</span>Простое число, которое говорит</a>
+    <a href="#autogram"><span>III</span>Предложение, которое пересчитало себя</a>
+    <a href="#chimera"><span>IV</span>Картинка, которая на самом деле архив</a>
+    <a href="#history"><span>V</span>История, которой не может быть</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="exhibit" id="globe">
+  <header class="placard">
+    <p class="no">Экспонат I</p>
+    <h2>Глобус, который печатает сам себя</h2>
+    <p class="meta">JavaScript · 3&nbsp;218 символов · поступил в коммите <code>0000001</code></p>
+  </header>
+  <div class="vitrine globe-vitrine">
+    <pre class="globe" id="globe-view" aria-label="Программа в форме глобуса">загрузка…</pre>
+    <div class="ticker">
+      <button id="globe-toggle" type="button" aria-label="Пауза">❚❚</button>
+      <span id="globe-clock">00:00</span>
+      <span id="globe-status" class="status"></span>
+    </div>
+  </div>
+  <div class="text">
+    <p>Это не картинка, а программа. Запустите её — она напечатает новую программу: ту же Землю, повёрнутую на&nbsp;15°, то есть на один час. Запустите напечатанное — получите следующий час. <strong>Через 24 запуска программа возвращается к самой себе байт в байт</strong>: сутки, записанные кодом.</p>
+    <p>Океаны здесь — это исходный код. Перед запуском программа выбрасывает пробелы и блоки суши, склеивает то, что осталось, и выполняет. Континенты — просто дыры в коде. Если кода не хватает на весь океан, остаток заполняется комментарием, а в волнах плавает фраза, которую приписывают Галилею: <em>«И всё‑таки она вертится»</em>.</p>
+    <p class="live">Каждый кадр выше — это вывод предыдущего кадра, который ваш браузер только что выполнил. Ничего не нарисовано заранее.</p>
+    <pre class="cmd">node exhibits/1-globe/globe.js            <span># напечатает следующий час</span>
+node exhibits/1-globe/spin.mjs            <span># крутит Землю в терминале</span></pre>
+    <p class="links"><a href="exhibits/1-globe/globe.js" download>скачать globe.js</a> · <a data-gh="exhibits/1-globe/tools/globe.src.js">исходник с комментариями</a></p>
+  </div>
+</section>
+
+<section class="exhibit" id="prime">
+  <header class="placard">
+    <p class="no">Экспонат II</p>
+    <h2>Простое число, которое говорит</h2>
+    <p class="meta">натуральное число · 625 цифр · поступил в коммите <code>0000002</code></p>
+  </header>
+  <div class="vitrine prime-vitrine">
+    <div class="qr" id="qr" role="img" aria-label="QR-код из цифр простого числа"></div>
+    <label class="switch"><input type="checkbox" id="qr-diff"> показать цифры, которые сделали число простым</label>
+  </div>
+  <div class="text">
+    <p><strong>Наведите на этот квадрат камеру телефона.</strong> QR-код скажет: «Я простое число». И это правда.</p>
+    <p>Прочитайте 625 цифр строка за строкой — получится одно число. Тёмные клетки — восьмёрки и девятки, светлые — единицы и семёрки. Число из одних «8» и «1» простым не было; простым его сделали ровно <strong id="prime-changes">две</strong> заменённые цифры — и QR-код от этого не перестал читаться.</p>
+    <div class="console" id="prime-log" aria-live="polite">Ваш браузер ещё не начал проверку.</div>
+    <p>Выше ваш браузер проверяет число вероятностными тестами (Миллер — Рабин и строгий тест Люка, вместе — BPSW). Для полной строгости в музее лежит <a data-gh="exhibits/2-prime/prime.cert.gp">сертификат простоты ECPP</a> — математическое доказательство, которое <a href="https://pari.math.u-bordeaux.fr/">PARI/GP</a> перепроверяет за доли секунды.</p>
+    <details class="number"><summary>само число</summary><p id="prime-digits"></p></details>
+    <pre class="cmd">node exhibits/2-prime/verify.mjs
+gp -q exhibits/2-prime/verify_cert.gp     <span># строгое доказательство</span></pre>
+  </div>
+</section>
+
+<section class="exhibit" id="autogram">
+  <header class="placard">
+    <p class="no">Экспонат III</p>
+    <h2>Предложение, которое пересчитало себя</h2>
+    <p class="meta">русский язык · 450 букв · поступил в коммите <code>0000003</code></p>
+  </header>
+  <div class="vitrine autogram-vitrine">
+    <p class="autogram" id="autogram-text">загрузка…</p>
+    <p class="autogram-hint" id="autogram-hint">Наведите на любое «сколько букв» — и все эти буквы подсветятся.</p>
+  </div>
+  <div class="text">
+    <p>Это предложение называет, сколько раз в нём встречается каждая из 33 букв русского алфавита, — и не ошибается ни разу. Такие предложения называют <em>автограммами</em>.</p>
+    <p>Трудность в том, что любое исправление ломает всё остальное: поменяешь «сорок одна» на «сорок две» — сразу изменится число букв «д», «в», «е», «о», «а»… Решение нашлось после 38,9&nbsp;миллиона шагов случайного поиска, и, похоже, для этой формулировки оно единственное.</p>
+    <div class="tally" id="autogram-tally"></div>
+    <pre class="cmd">node exhibits/3-autogram/verify.mjs</pre>
+  </div>
+</section>
+
+<section class="exhibit" id="chimera">
+  <header class="placard">
+    <p class="no">Экспонат IV</p>
+    <h2>Картинка, которая на самом деле архив</h2>
+    <p class="meta">один файл · три формата · поступил в коммите <code>0000004</code></p>
+  </header>
+  <div class="vitrine chimera-vitrine">
+    <img src="exhibits/4-chimera/kunstkamera.png" alt="Постер Кунсткамеры невозможного с глобусом из кода" id="chimera-img" width="1200" height="1600">
+  </div>
+  <div class="text">
+    <p>Это постер, файл <code>kunstkamera.png</code>. Он же — веб-страница: переименуйте его в <code>.html</code> и откройте. Он же — ZIP-архив со всем музеем: переименуйте в <code>.zip</code> и распакуйте.</p>
+    <p>Так можно, потому что каждый формат читает файл со своей стороны. PNG читают с начала и вежливо пропускают незнакомые фрагменты — в одном из них, по имени <code>htMl</code>, лежит страница. ZIP читают с конца — архив дописан после последнего байта картинки. А HTML прощает любой мусор вокруг себя.</p>
+    <div class="bytemap" id="chimera-map"></div>
+    <p class="links" id="chimera-links"></p>
+    <details class="number"><summary id="chimera-zip-summary">что внутри архива</summary><ul class="files" id="chimera-files"></ul></details>
+    <pre class="cmd">unzip -l exhibits/4-chimera/kunstkamera.png
+node exhibits/4-chimera/verify.mjs</pre>
+  </div>
+</section>
+
+<section class="exhibit" id="history">
+  <header class="placard">
+    <p class="no">Экспонат V</p>
+    <h2>История, которой не может быть</h2>
+    <p class="meta">git · SHA-1 · поступил в коммите <code>0000005</code></p>
+  </header>
+  <div class="vitrine history-vitrine">
+    <ol class="log" id="history-log"><li class="muted">загружаю историю репозитория с GitHub…</li></ol>
+  </div>
+  <div class="text">
+    <p>Посмотрите на номера коммитов этого репозитория: <code>0000000</code>, <code>0000001</code>, <code>0000002</code>… Так не бывает. Номер коммита в git — это SHA-1 от его содержимого. Его нельзя выбрать, можно только угадать. Шанс, что хеш начнётся с семи нужных цифр, — один к 268&nbsp;435&nbsp;456.</p>
+    <p>Каждый из этих коммитов — результат перебора сотен миллионов вариантов. Перебирались невидимые символы: в конце сообщения каждого коммита спрятаны 32 пробела и табуляции, и только одна их комбинация из нескольких миллиардов даёт нужный хеш. Выше они проявлены: <span class="ws">·</span> — пробел, <span class="ws">→</span> — табуляция.</p>
+    <div class="miner">
+      <p><strong>Попробуйте сами.</strong> Ваш браузер будет дописывать к вашему имени числа, пока SHA-1 не начнётся с нулей.</p>
+      <form id="miner-form">
+        <input id="miner-name" type="text" value="Кунсткамера" maxlength="40" aria-label="Строка для перебора">
+        <select id="miner-zeros" aria-label="Сколько нулей"><option value="4">4 нуля</option><option value="5" selected>5 нулей</option><option value="6">6 нулей</option></select>
+        <button type="submit">Искать</button>
+      </form>
+      <div class="console" id="miner-log" aria-live="polite"></div>
+    </div>
+    <pre class="cmd">git log --oneline
+node exhibits/5-history/verify.mjs</pre>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p class="no">Проверить всё сразу</p>
+  <pre class="cmd" id="clone-cmd">git clone https://github.com/moprety01-cpu/hoplite.git kunstkamera
+cd kunstkamera &amp;&amp; node verify.mjs</pre>
+  <p>Кунсткамеру за один вечер собрал ИИ: перебором SHA-1, проекциями сфер, тестами простоты, случайным поиском по русским числительным и двумя форматами файлов, сшитыми в третий. Никаких зависимостей: всё, что здесь работает, лежит в <a data-gh="">репозитории</a>.</p>
+</footer>
+
+</body>
+</html>
